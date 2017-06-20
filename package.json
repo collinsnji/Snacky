@@ -1,0 +1,38 @@
+{
+  "name": "snacky",
+  "version": "0.0.1",
+  "description": " Material Design inspired Snackbar module",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec -r jsdom-global/register",
+    "compress": "minify src/*.js && minify src/*.css && mv src/*.min.js src/*.min.css dist"
+  },
+  "engines": {
+    "node": ">=4.8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/collinsnji/Snacky.git"
+  },
+  "keywords": [
+    "Material",
+    "Design",
+    "Snacky",
+    "snack",
+    "Snackbar",
+    "Collin",
+    "Grimm"
+  ],
+  "author": "Collin Grimm <collin.grimm@protonmail.ch> (https://collingrimm.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/collinsnji/Snacky/issues"
+  },
+  "homepage": "https://github.com/collinsnji/Snacky#readme",
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "jsdom": "11.0.0",
+    "jsdom-global": "3.0.2",
+    "mocha": "^3.4.2"
+  }
+}
