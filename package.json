@@ -2,9 +2,9 @@
   "name": "snacky",
   "version": "0.0.1",
   "description": " Material Design inspired Snackbar module",
-  "main": "index.js",
+  "main": "src/Snacky.js",
   "scripts": {
-    "test": "mocha --reporter spec -r jsdom-global/register",
+    "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec -r jsdom-global/register ./test/*",
     "compress": "minify src/*.js && minify src/*.css && mv src/*.min.js src/*.min.css dist"
   },
   "engines": {
@@ -31,6 +31,8 @@
   "homepage": "https://github.com/collinsnji/Snacky#readme",
   "devDependencies": {
     "chai": "^4.0.2",
+    "coveralls": "^2.13.1",
+    "istanbul": "^0.4.5",
     "jsdom": "11.0.0",
     "jsdom-global": "3.0.2",
     "mocha": "^3.4.2"
