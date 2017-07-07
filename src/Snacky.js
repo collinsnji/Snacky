@@ -6,7 +6,7 @@
  * @license MIT license https://collingrimm.me/LICENSE.txt
  */
 
-'use strict'
+"use strict";
 
 /**
  * Snacky constructor. This creates a new snackbar with the default options.
@@ -22,11 +22,11 @@ function Snacky(message) {
     // since Node.js does not support spread operator for objects yet
     var snackbar = Object.assign({}, arguments[1]);
     this.defaults = {
-        message: 'Snacky is awesome!',
+        message: "Snacky is awesome!",
         duration: 5000,
-        textColor: '#FFFFFF',
-        actionText: 'Dismiss',
-        backgroundColor: '#323232',
+        textColor: "#FFFFFF",
+        actionText: "Dismiss",
+        backgroundColor: "#323232",
     }
     this.message = message || this.defaults.message;
     this.duration = snackbar.duration || this.defaults.duration;
@@ -34,7 +34,7 @@ function Snacky(message) {
     this.backgroundColor = snackbar.background || this.defaults.backgroundColor;
     this.actionText = snackbar.actionText || this.defaults.actionText;
     this.showAction = snackbar.showAction || false;
-    this.customClass = snackbar.customClass || 'snackbar';
+    this.customClass = snackbar.customClass || "snackbar";
 }
 
 /**
@@ -58,9 +58,9 @@ Snacky.prototype.createNewElement = function (element, classname) {
 Snacky.prototype.show = function (mesg) {
     var self = this;
 
-    var body = document.querySelector('body');
-    var container = self.createNewElement('div', self.customClass);
-    var text = self.createNewElement('p', 'snack-text');
+    var body = document.querySelector("body");
+    var container = self.createNewElement("div", self.customClass);
+    var text = self.createNewElement("p", "snack-text");
 
     container.style.backgroundColor = self.backgroundColor;
     text.style.color = self.textColor;
@@ -69,7 +69,7 @@ Snacky.prototype.show = function (mesg) {
 
     // REVIEW: This is kinda a hacky method, but it works xD
     if (!!self.showAction) {
-        var actionButton = self.createNewElement('button', 'action-button');
+        var actionButton = self.createNewElement("button", "action-button");
         actionButton.innerHTML = self.actionText;
         container.appendChild(actionButton);
     }
