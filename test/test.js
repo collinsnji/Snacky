@@ -15,7 +15,7 @@ describe('#Snacky Test Running...', () => {
     // TODO Take a critical look at this test case
     it('Should use default settings if none is/are supplied', () => {
         let snackbar = new Snacky();
-        expect(snackbar['message']).to.equals('Snacky is awesome!');
+        expect(snackbar['message']).to.equals('Snacky.js is awesome!');
     });
     it('Should have the \'show\' method', () => {
         let snackbar = new Snacky();

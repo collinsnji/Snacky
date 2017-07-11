@@ -1,7 +1,7 @@
 {
     "name": "snacky.js",
-    "version": "0.0.1",
-    "description": " Material Design inspired Snackbar module",
+    "version": "0.0.2",
+    "description": "Material Design inspired Snackbar module",
     "main": "src/Snacky.js",
     "scripts": {
         "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec -r jsdom-global/register ./test/*",
