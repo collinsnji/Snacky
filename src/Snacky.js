@@ -11,10 +11,10 @@
 /**
  * Snacky constructor. This creates a new snackbar with the default options.
  * It takes one argument, a message or text to display.
- * 
+ *
  * Other options eg, duration, text color etc can be passes
  * in as an object, but are optional.
- * 
+ *
  * @param {String} message Message to display in Snackbar
  */
 function Snacky(message) {
@@ -22,7 +22,7 @@ function Snacky(message) {
     // since Node.js does not support spread operator for objects yet
     var snackbar = Object.assign({}, arguments[1]);
     this.defaults = {
-        message: "Snacky is awesome!",
+        message: "Snacky.js is awesome!",
         duration: 5000,
         textColor: "#FFFFFF",
         actionText: "Dismiss",
@@ -39,23 +39,23 @@ function Snacky(message) {
 
 /**
  * Create a new HTML element and add a class to it
- * 
+ *
  * @param {String} element Name of HTML tag to be created
  * @param {String} classname Classname to be appended to element
  * @returns HTMLElement
  */
-Snacky.prototype.createNewElement = function (element, classname) {
+Snacky.prototype.createNewElement = function(element, classname) {
     var el = document.createElement(element);
     el.classList.add(classname);
     return el;
 }
 
 /**
- * Appends the Snackbar to the page at the document;s body element
+ * Appends the Snackbar to the page at the document's body element
  * @param {String} mesg An optional message to pass to the snackbar.
  * This is to avoid the creation of multiple instances
  */
-Snacky.prototype.show = function (mesg) {
+Snacky.prototype.show = function(mesg) {
     var self = this;
 
     var body = document.querySelector("body");
@@ -77,9 +77,9 @@ Snacky.prototype.show = function (mesg) {
     body.appendChild(container);
 
     // Remove the snackbar from the page
-    setTimeout(function () {
+    setTimeout(function() {
         container.style.animation = "hide-snackbar 300ms forwards";
-        setTimeout(function () {
+        setTimeout(function() {
             body.removeChild(container);
         }, self.duration / 10);
     }, self.duration - 1000);
