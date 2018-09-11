@@ -1,88 +1,81 @@
-/**
- * Snacky v0.0.1
+/**!
+ * Snacky.js - Material Design snackbar module
  *
  * @author Collin Grimm
- * @copyright 2017 Collin Grimm (and other contributors)
+ * @copyright (c) 2017 - Present Collin Grimm
  * @license MIT license https://collingrimm.me/LICENSE.txt
- */
-
+*/
 "use strict";
+let timer, container, body;
 
 /**
- * Snacky constructor. This creates a new snackbar with the default options.
- * It takes one argument, a message or text to display.
- *
- * Other options eg, duration, text color etc can be passes
- * in as an object, but are optional.
- *
- * @param {String} message Message to display in Snackbar
- */
-function Snacky(message) {
-    // Using this instead of var Snackbar = {...arguments[1]}
-    // since Node.js does not support spread operator for objects yet
-    var snackbar = Object.assign({}, arguments[1]);
-    this.defaults = {
-        message: "Snacky.js is awesome!",
-        duration: 5000,
-        textColor: "#FFFFFF",
-        actionText: "Dismiss",
-        backgroundColor: "#323232",
+ * @module Snacky
+ * @kind class
+ * @description Main Snacky.js class where all methods are defined
+*/
+class Snacky {
+    constructor(config = null) {
+        let defaultConfigs = {
+            duration: 5000,
+            textColor: "#FFFFFF",
+            backgroundColor: "#323232",
+            customClass: 'snackbar',
+            actionText: 'Dismiss',
+            actionButton: false
+        }
+        this.options = { ...defaultConfigs, ...config }
     }
-    this.message = message || this.defaults.message;
-    this.duration = snackbar.duration || this.defaults.duration;
-    this.textColor = snackbar.color || this.defaults.textColor;
-    this.backgroundColor = snackbar.background || this.defaults.backgroundColor;
-    this.actionText = snackbar.actionText || this.defaults.actionText;
-    this.showAction = snackbar.showAction || false;
-    this.customClass = snackbar.customClass || "snackbar";
-}
-
-/**
- * Create a new HTML element and add a class to it
- *
- * @param {String} element Name of HTML tag to be created
- * @param {String} classname Classname to be appended to element
- * @returns HTMLElement
- */
-Snacky.prototype.createNewElement = function(element, classname) {
-    var el = document.createElement(element);
-    el.classList.add(classname);
-    return el;
-}
-
-/**
- * Appends the Snackbar to the page at the document's body element
- * @param {String} mesg An optional message to pass to the snackbar.
- * This is to avoid the creation of multiple instances
- */
-Snacky.prototype.show = function(mesg) {
-    var self = this;
-
-    var body = document.querySelector("body");
-    var container = self.createNewElement("div", self.customClass);
-    var text = self.createNewElement("p", "snack-text");
-
-    container.style.backgroundColor = self.backgroundColor;
-    text.style.color = self.textColor;
-    text.innerHTML = mesg || self.message;
-    container.appendChild(text);
-
-    // REVIEW: This is kinda a hacky method, but it works xD
-    if (!!self.showAction) {
-        var actionButton = self.createNewElement("button", "action-button");
-        actionButton.innerHTML = self.actionText;
-        container.appendChild(actionButton);
+    static Element(element, attr) {
+        let elm = document.createElement(element);
+        if (typeof attr === 'object') {
+            for (let i in attr) { elm.setAttribute(i, attr[i]); }
+        }
+        else { element.classList.add(attr); }
+        return elm;
     }
+    /**
+     * Write a message in the snackbar
+     * @param {string} message Message to display in snackbar
+     * @returns {Function} timer
+     */
+    show(message = 'Hello World') {
+        body = document.querySelector('body');
+        container = Snacky.Element('div', { class: this.options.customClass });
+        const text = Snacky.Element('p', { class: 'snack-text' });
 
-    body.appendChild(container);
+        container.style.backgroundColor = this.options.backgroundColor;
+        text.style.color = this.options.textColor;
+        text.innerHTML = message;
+        container.appendChild(text);
 
-    // Remove the snackbar from the page
-    setTimeout(function() {
-        container.style.animation = "hide-snackbar 300ms forwards";
-        setTimeout(function() {
-            body.removeChild(container);
-        }, self.duration / 10);
-    }, self.duration - 1000);
+        if (this.options.actionButton) {
+            let actionButton = Snacky.Element('button', { class: 'action-button' });
+            actionButton.innerHTML = this.options.actionText;
+            ['click', 'ontouchstart'].forEach((event) => {
+                actionButton.addEventListener(event, (e) => {
+                    if (this.options.action) {
+                        e.preventDefault();
+                        return this.options.action();
+                    }
+                    Snacky.Dismiss();
+                    e.preventDefault();
+                }, false);
+            });
+            container.appendChild(actionButton);
+        }
+
+        body.appendChild(container);
+        return timer = (setTimeout(() => {
+            container.style.animation = 'hide-snackbar 300ms forwards';
+            setTimeout(() => {
+                body.removeChild(container);
+            }, this.options.duration / 10);
+        }, this.options.duration - 1000));
+    }
+    static Dismiss() {
+        body.removeChild(container);
+        clearTimeout(timer);
+    }
 }
 
 module.exports = Snacky;

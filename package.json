@@ -31,10 +31,10 @@
     "homepage": "https://github.com/collinsnji/Snacky#readme",
     "devDependencies": {
         "chai": "^4.0.2",
-        "coveralls": "^2.13.1",
+        "coveralls": "^3.0.2",
         "istanbul": "^0.4.5",
         "jsdom": "11.0.0",
         "jsdom-global": "3.0.2",
-        "mocha": "^3.4.2"
+        "mocha": "^5.2.0"
     }
 }

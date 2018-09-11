@@ -4,7 +4,7 @@
     animation: show-snackbar 450ms forwards;
     transition: all 500ms ease;
     transition-property: top, right, bottom, left, opacity;
-    font-family: Roboto, sans-serif;
+    font-family: inherit, sans-serif;
     font-size: 14px;
     font-weight: 300;
     text-align: left;
