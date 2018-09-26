@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Snacky.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../dist/snacky.min.js"></script>
+</head>
+
+<body>
+    <p><a href="https://github.com/collinsnji/Snacky"><img src="../snacky_cover.png" alt="Snacky.js"></a></p>
+    <p><a href="https://travis-ci.org/collinsnji/Snacky"><img src="https://img.shields.io/travis/collinsnji/Snacky.svg?style=flat-square"
+                alt="Travis"></a>
+        <a href="https://coveralls.io/github/collinsnji/Snacky?branch=master"><img src="https://img.shields.io/coveralls/collinsnji/snacky.svg?style=flat-square"
+                alt="Coveralls"></a>
+        <a href=""><img src="https://img.shields.io/npm/v/snacky.js.svg?style=flat-square" alt="Version"></a>
+        <a href=""><img src="https://img.shields.io/github/size/collinsnji/Snacky/dist/Snacky.min.js.svg?style=flat-square"
+                alt="Size"></a>
+        <a href=""><img src="https://img.shields.io/npm/dt/snacky.js.svg?style=flat-square" alt="npm"></a>
+        <a href=""><img src="https://img.shields.io/github/contributors/collinsnji/Snacky.svg?style=flat-square" alt="Contributors"></a>
+        <a href=""><img src="https://img.shields.io/github/issues/collinsnji/snacky.svg?style=flat-square" alt="Issues"></a>
+        <a href="https://collingrimm.me/LICENSE.txt"><img src="https://img.shields.io/npm/l/snacky.js.svg?style=flat-square"
+                alt="License"></a></p>
+    <h2 id="a-material-design-inspired-snackbar-plugin-for-the-web">A Material Design inspired Snackbar plugin for the
+        web</h2>
+    <p><strong>Snacky.js</strong> is a simple and minimal node module which makes adding snackbar notifications to web
+        apps utterly easy.</p>
+    <h3 id="how-to-install">How to install</h3>
+    <p>In your project root, run </p>
+    <p><code>npm install --save snacky.js</code></p>
+    <h3 id="how-to-use">How to use</h3>
+    <p>Require the module like any other module in your javascript file. That is,</p>
+    <p><code>var Snacky = require(&#39;snacky.js&#39;)</code></p>
+    <h3 id="example-usage">Example usage</h3>
+    <pre><code class="lang-javascript">  var Snacky = require('snacky.js');
+        
+          // <span class="hljs-keyword">Create</span> a <span class="hljs-keyword">new</span> <span class="hljs-keyword">default</span> Snacky notification (<span class="hljs-keyword">or</span> snackbar)
+          // <span class="hljs-keyword">Default</span> message <span class="hljs-keyword">in</span> snackbar <span class="hljs-keyword">is</span> <span class="hljs-string">'Snacky is awesome!'</span>
+          let snackbar = <span class="hljs-keyword">new</span> Snacky();
+        
+          // <span class="hljs-keyword">Show</span> the <span class="hljs-keyword">default</span> snackbar
+          snackbar.show();
+        </code></pre>
+    <h3 id="want-snacky-js-to-blend-with-your-app-style-">Want Snacky.js to blend with your app style?</h3>
+    <p><strong>Change default message</strong></p>
+    <pre><code class="lang-javascript">  var Snacky = require('snacky.js');
+        
+          // <span class="hljs-keyword">Create</span> a <span class="hljs-keyword">new</span> Snacky notification <span class="hljs-keyword">with</span> custom <span class="hljs-keyword">content</span>
+          let snackbar = <span class="hljs-keyword">new</span> Snacky(<span class="hljs-string">'Hello world'</span>);
+              snackbar.show();
+          // Tip: You can <span class="hljs-keyword">create</span> <span class="hljs-keyword">and</span> <span class="hljs-keyword">show</span> a snackbar <span class="hljs-keyword">at</span> the same time. E.g
+          // let snackbar = <span class="hljs-keyword">new</span> Snacky(<span class="hljs-string">'Hello world'</span>).show();
+        </code></pre>
+    <p><strong>Change default style and timeout duration</strong></p>
+    <pre><code class="lang-javascript">  <span class="hljs-built_in">var</span> Snacky = <span class="hljs-keyword">require</span>(<span class="hljs-string">'snacky.js'</span>);
+        
+          <span class="hljs-comment">// Change text color and background color</span>
+          <span class="hljs-keyword">let</span> snackbar = <span class="hljs-literal">new</span> Snacky(<span class="hljs-string">'Hello world'</span>, {color: <span class="hljs-string">'red'</span>, background: <span class="hljs-string">'#43528f'</span>});
+          <span class="hljs-comment">// Color value follows the same convention as in CSS</span>
+        
+          <span class="hljs-comment">// Change default duration</span>
+          <span class="hljs-keyword">let</span> snacky = <span class="hljs-literal">new</span> Snacky(<span class="hljs-string">'Hello world'</span>, {<span class="hljs-built_in">duration</span>: <span class="hljs-number">6000</span>}).show();
+          <span class="hljs-comment">// The duration parameter is in miliseconds</span>
+        </code></pre>
+    <p><strong>Want to customise more</strong></p>
+    <pre><code class="lang-javascript">  var Snacky = require(<span class="hljs-string">'snacky.js'</span>);
+        
+          <span class="hljs-comment">// Combine it all</span>
+          let Snack = <span class="hljs-keyword">new</span> Snacky(<span class="hljs-string">'Unicorns can\' fly!'</span>, {
+        <span class="hljs-symbol">      color:</span> <span class="hljs-string">'#fff'</span>, <span class="hljs-string">background:</span> <span class="hljs-string">'pink'</span>, <span class="hljs-string">duration:</span> <span class="hljs-string">'4000'</span>
+            });
+          <span class="hljs-comment">// Add an action button!</span>
+          <span class="hljs-keyword">new</span> Snacky(<span class="hljs-string">'Action button'</span>, { <span class="hljs-string">showAction:</span> <span class="hljs-literal">true</span>, <span class="hljs-string">actionText:</span> <span class="hljs-string">'OK'</span>}).show();
+        </code></pre>
+    <h4 id="all-properties">All properties</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Desription</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>message</code></td>
+                <td>string</td>
+                <td>Snacky.js is awesome!</td>
+                <td>Notification message</td>
+            </tr>
+            <tr>
+                <td><code>color</code></td>
+                <td>string</td>
+                <td>#FFFFFF</td>
+                <td>Color of notification text</td>
+            </tr>
+            <tr>
+                <td><code>background</code></td>
+                <td>string</td>
+                <td>#323232</td>
+                <td>Notification background color</td>
+            </tr>
+            <tr>
+                <td><code>duration</code></td>
+                <td>integer</td>
+                <td>5000</td>
+                <td>Timeout before notification is destroyed</td>
+            </tr>
+            <tr>
+                <td><code>showAction</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Show an action button on the notification</td>
+            </tr>
+            <tr>
+                <td><code>actionText</code></td>
+                <td>string</td>
+                <td>Dismiss</td>
+                <td>Text to show on notification action button</td>
+            </tr>
+        </tbody>
+    </table>
+    <h3 id="contributing">Contributing</h3>
+    <p>Want to contribute to make this better? Open a new issue or add a new feature then make a PR :)</p>
+    <h3 id="license">License</h3>
+    <p>Licensed under the <a href="https://collingrimm.me/LICENSE.txt">MIT License</a></p>
+    <script>
+        new Snacky({
+            backgroundColor: '#999',
+            actionButton: true
+        }).show('Low Life');
+    </script>
+</body>
+
+</html>

@@ -26,6 +26,14 @@ Require the module like any other module in your javascript file. That is,
 `var Snacky = require('snacky.js')`
 
 ### Example usage
+<script src='/dist/snacky.min.js'></script>   
+<script>
+  function showExample(){
+    new Snacky().show('Simple snackbar example');
+  }
+</script>
+
+<button onclick='showExample()'>Show Example</button>   
 
 ```javascript
   var Snacky = require('snacky.js');
@@ -74,14 +82,14 @@ __Want to customise more__
 ```
 #### All properties
 
-| Property | Type | Default | Desription |
-| -------- | ---- | ------- | -----------|
-| `message`| string | Snacky.js is awesome! | Notification message |
-| `color`  | string | #FFFFFF | Color of notification text |
-| `background` | string | #323232 | Notification background color |
-| `duration` | integer | 5000 | Timeout before notification is destroyed |
-| `showAction` | boolean | false | Show an action button on the notification |
-| `actionText` | string | Dismiss | Text to show on notification action button |
+| Property     | Type    | Default               | Desription                                 |
+| ------------ | ------- | --------------------- | ------------------------------------------ |
+| `message`    | string  | Snacky.js is awesome! | Notification message                       |
+| `color`      | string  | #FFFFFF               | Color of notification text                 |
+| `background` | string  | #323232               | Notification background color              |
+| `duration`   | integer | 5000                  | Timeout before notification is destroyed   |
+| `showAction` | boolean | false                 | Show an action button on the notification  |
+| `actionText` | string  | Dismiss               | Text to show on notification action button |
 
 ### Contributing
 
