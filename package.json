@@ -5,7 +5,9 @@
     "main": "src/Snacky.js",
     "scripts": {
         "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec -r jsdom-global/register ./test/*",
-        "compress": "minify src/*.js && minify src/*.css && mv src/*.min.js src/*.min.css dist"
+        "compress": "minify src/*.js && minify src/*.css && mv src/*.min.js src/*.min.css dist",
+        "build": "webpack --mode production",
+        "build:dev": "webpack --mode development"
     },
     "engines": {
         "node": ">=4.8.3"
@@ -32,9 +34,14 @@
     "devDependencies": {
         "chai": "^4.0.2",
         "coveralls": "^3.0.2",
+        "css-loader": "^1.0.0",
         "istanbul": "^0.4.5",
         "jsdom": "11.0.0",
         "jsdom-global": "3.0.2",
-        "mocha": "^5.2.0"
+        "mocha": "^5.2.0",
+        "style-loader": "^0.23.0",
+        "uglify-js": "^3.4.9",
+        "webpack": "^4.19.1",
+        "webpack-cli": "^3.1.1"
     }
 }

@@ -59,3 +59,9 @@ typings/
 
 # Sass cache
 .sass-cache
+
+# vscode
+.vscode
+
+# misc
+.DS_Store
