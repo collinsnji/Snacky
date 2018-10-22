@@ -1,12 +1,25 @@
 language: node_js
-os: linux
 dist: trusty
+sudo: false
 node_js:
-  - 6
-  
+  - 10
+branches:
+  only:
+  - master
+
 cache:
   directories:
     - node_modules
+
+before_install:
+  - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - 
+  - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+  - sudo apt update -y
+  - sudo apt install -y --no-install-recommends yarn
+install:
+  - yarn install
 script:
-  - npm run test
-after_script: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - yarn build
+  - yarn test
+after_script:
+  - yarn coverage

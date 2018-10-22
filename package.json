@@ -1,16 +1,15 @@
 {
     "name": "snacky.js",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Material Design inspired Snackbar module",
-    "main": "src/Snacky.js",
+    "main": "src/snacky.js",
     "scripts": {
         "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec -r jsdom-global/register ./test/*",
-        "compress": "minify src/*.js && minify src/*.css && mv src/*.min.js src/*.min.css dist",
-        "build": "webpack --mode production",
-        "build:dev": "webpack --mode development"
+        "build": "./node_modules/.bin/webpack --mode production && node minify.js",
+        "coverage": "cat ./coverage/lcov.info | coveralls"
     },
     "engines": {
-        "node": ">=4.8.3"
+        "node": ">=8.9.0"
     },
     "repository": {
         "type": "git",
@@ -39,6 +38,7 @@
         "jsdom": "11.0.0",
         "jsdom-global": "3.0.2",
         "mocha": "^5.2.0",
+        "node-minify": "^3.5.1",
         "style-loader": "^0.23.0",
         "uglify-js": "^3.4.9",
         "webpack": "^4.19.1",

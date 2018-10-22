@@ -13,7 +13,7 @@ let timer, container, body;
  * @kind class
  * @description Main Snacky.js class where all methods are defined
 */
-class Snacky {
+module.exports = class Snacky {
     constructor(config = null) {
         let defaultConfigs = {
             duration: 5000,
@@ -23,7 +23,7 @@ class Snacky {
             actionText: 'Dismiss',
             actionButton: false
         }
-        this.options = { ...defaultConfigs, ...config }
+        this.options = Object.assign({}, defaultConfigs, config);
     }
     static Element(element, attr) {
         let elm = document.createElement(element);
@@ -38,14 +38,15 @@ class Snacky {
      * @param {string} message Message to display in snackbar
      * @returns {Function} timer
      */
-    show(message = 'Hello World') {
+    show(message) {
+        let defaultMessage = 'Snacky works';
         body = document.querySelector('body');
         container = Snacky.Element('div', { class: this.options.customClass });
         const text = Snacky.Element('p', { class: 'snack-text' });
 
         container.style.backgroundColor = this.options.backgroundColor;
         text.style.color = this.options.textColor;
-        text.innerHTML = message;
+        text.innerHTML = message || defaultMessage;
         container.appendChild(text);
 
         if (this.options.actionButton) {
@@ -77,5 +78,3 @@ class Snacky {
         clearTimeout(timer);
     }
 }
-
-module.exports = Snacky;

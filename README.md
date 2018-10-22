@@ -1,7 +1,7 @@
 [![Snacky.js](snacky_cover.png)](https://github.com/collinsnji/Snacky)
 
 [![Travis](https://img.shields.io/travis/collinsnji/Snacky.svg?style=flat-square)](https://travis-ci.org/collinsnji/Snacky)
-[![Coveralls](https://img.shields.io/coveralls/collinsnji/snacky.svg?style=flat-square)](https://coveralls.io/github/collinsnji/Snacky?branch=master)
+[![Coveralls](https://img.shields.io/coveralls/collinsnji/Snacky.svg?style=flat-square)](https://coveralls.io/github/collinsnji/Snacky?branch=master)
 [![Version](https://img.shields.io/npm/v/snacky.js.svg?style=flat-square)]()
 [![Size](https://img.shields.io/github/size/collinsnji/Snacky/dist/Snacky.min.js.svg?style=flat-square)]()
 [![npm](https://img.shields.io/npm/dt/snacky.js.svg?style=flat-square)]()
